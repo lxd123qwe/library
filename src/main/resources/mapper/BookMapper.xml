@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="cn.lxd.library.dao.BookDao">
+	
+	<select id="find" resultType="cn.lxd.library.entity.Book">
+		select * from library_book
+	</select>
+	
+	<select id="findByBno" parameterType="string"
+			resultType="cn.lxd.library.entity.Book">
+		select * from library_book
+		where bno=#{bno}
+	</select>
+    
+    <insert id="save" parameterType="cn.lxd.library.entity.Book">
+    	insert into library_book(id,bno,bname,tid,author,price,brief,total,remain,cdate,udate,yn)
+			 values (#{id},#{bno},#{bname},#{tid},#{author},#{price},#{brief},#{total},
+			 		#{remain},#{cdate},#{udate},#{yn})
+    </insert>
+	
+	<delete id="delete" parameterType="cn.lxd.library.entity.Book">
+		delete from library_book
+		where id=#{id}
+	</delete>  
+	
+	<select id="findById" parameterType="cn.lxd.library.entity.Book"
+						  resultType="cn.lxd.library.entity.Book">
+	select * from library_book
+	where id=#{id}
+	</select>
+
+	<update id="update" parameterType="cn.lxd.library.entity.Book">
+		update library_book 
+		set bname=#{bname},yn=#{yn},author=#{author},
+			price=#{price},remain=#{remain},brief=#{brief}
+		where id=#{id}
+	</update>  
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

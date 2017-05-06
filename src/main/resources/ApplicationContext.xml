@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"  
+	xmlns:jee="http://www.springframework.org/schema/jee" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+	
+	 <!-- DateSource 数据源  连接池  -->
+	 	<bean id="ds" class="org.apache.commons.dbcp.BasicDataSource">
+	 		<property name="username" value="root"></property>
+	 		<property name="password" value="start"></property>
+	 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+	 		<property name="url" 
+	 value="jdbc:mysql://localhost:3306/first?useUnicode=true&amp;characterEncoding=utf8">
+	 		</property>
+	 	</bean>
+	 <!-- 可以拿到SqlSession对象 -->
+	 		<bean id="ssfb" class="org.mybatis.spring.SqlSessionFactoryBean">
+	 		<!-- 注入连接池 -->
+	 			<property name="dataSource" ref="ds"/>
+	 		<!-- 指定生成DAO接口的文件路径 -->
+	 			<property name="mapperLocations" value="classpath:mapper/*.xml"/>
+	 		</bean>
+	<!-- 配置指定批量生成Mapper接口的的包 ；里面指定注入SqlSessionFactoryBean-->
+			<bean id="mscf" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+				<property name="basePackage" value="cn.lxd.library.dao"/>
+				
+			</bean>
+	<!-- 开启注解扫描,扫描Controller,Service组件 -->
+		<context:component-scan base-package="cn.lxd.library"/>
+
+	<!-- handlerMapping,支持@RequestMapping,@ResponseBody,@Exceptionhandler-->
+		<mvc:annotation-driven/>
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
