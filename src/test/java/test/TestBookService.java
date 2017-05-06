@@ -23,6 +23,7 @@ public class TestBookService {
 		Result books=bookService.findBooks();
 		System.out.println(books);
 	}
+	
 	@Test
 	public void findByBno(){
 		String config="ApplicationContext.xml";
